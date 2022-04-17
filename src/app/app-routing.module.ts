@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/finanzas', pathMatch: 'full' },
-
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   {
-    path: 'finanzas',
+    path: '',
     loadChildren: () => import('./components/finanzas/finanzas.module').then(m => m.FinanzasModule)
-  }
+  },
+  { path: '**', redirectTo: '/', pathMatch: 'full' }
 ];
 
 @NgModule({
