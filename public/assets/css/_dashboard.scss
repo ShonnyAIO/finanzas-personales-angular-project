@@ -1,0 +1,21 @@
+@import "./colores";
+
+/* Configuraciones de Dashboard */
+.mat-toolbar {
+    background: $background-toolbar;
+    padding: 15px;
+    border-radius: 10px;
+    line-height: 0;
+    .row{
+        width: 100%;
+    }
+    p {
+        font-weight: 600;
+    }
+}
+
+.presentation{
+    height: 30%;
+    margin-top: 10px;
+}
+

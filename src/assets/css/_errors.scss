@@ -1,0 +1,33 @@
+@import './colores';
+
+.alert{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+  height: 38px;
+  text-align: center;
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  margin: 0px auto;
+  width: 438px;
+  p{
+    margin: 0;
+  }
+  &.k-error {
+    background-color: $red-error;
+  }
+  &.k-warning {
+    background-color: $background-yellow;
+  }
+  &.k-success {
+    background-color: $border-verde;
+  }
+}

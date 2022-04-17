@@ -1,0 +1,60 @@
+.lg_header_box{
+  padding: 32px;
+}
+.mat-toolbar {
+  background: #ffffff;
+  color: rgba(0,0,0,.87);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  .row{
+    width: 100%;
+  }
+}
+
+.logo-header{
+  width: 120px;
+  vertical-align: middle;
+}
+
+.user-box{
+  height: 15px;
+  p{
+    font-size: 12px;
+    text-align: end;
+    line-height: 0.2;
+    letter-spacing: normal;
+  }
+  .business-name{
+    color: #161d4b;
+    font-weight: 600;
+  }
+  .business-rol{
+    text-transform: uppercase;
+    color: #80808070;
+  }
+}
+
+.user-avatar{
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  vertical-align: bottom;
+  border-radius: 20px;
+  background-color: #80808042;
+  border: 1.5px solid #ffd500;
+  padding: 4px;
+}
+
+@media (max-width: 768px) {
+  .register-btn{
+    width: 95px;
+    height: 24px;
+    line-height: 26px;
+    font-size: 10px;
+  }
+  .logo-header{
+    width: 90px;
+  }
+  .user-info{
+    display: none;
+  }
+}

@@ -1,0 +1,28 @@
+@import './colores';
+
+.conection-error {
+  .wrapper_error {
+    display: inline-flex;
+    place-items: center;
+    gap: 5px;
+
+    p {
+      font-size: 10px;
+      font-weight: 500;
+      color: #ff5722;
+      padding-top: 10px;
+    }
+
+    .material-icons {
+      padding: 12px;
+      border-radius: 25px;
+      box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px, rgb(0 0 0 / 6%) 0px 2px 4px -1px;
+      background: #fff;
+      color: $background-yellow;
+    }
+  }
+}
+
+.warning_bg {
+  background: #ffd70da3;
+}

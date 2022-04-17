@@ -1,0 +1,54 @@
+.row {
+  width: 100%;
+}
+
+.logo-box {
+  margin: 0 auto;
+}
+
+.menu-wrapper {
+  margin-top: 35px;
+}
+
+.quitar-enlace {
+  text-decoration: none;
+}
+
+.side-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.material-icons-outlined {
+  background: #1b224f;
+  color: white;
+  border-radius: 7px;
+  padding: 4px;
+}
+
+.menu-item {
+  cursor: pointer;
+
+  p {
+    padding: 15px;
+    margin: auto 0 12px;
+    color: #1b224f;
+  }
+}
+
+.logout-box {
+  height: 18%;
+}
+
+.logout-btn {
+  background-color: #ffd500;
+  color: rgba(0, 0, 0, 0.849);
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .logout-box {
+    height: 30%;
+  }
+}

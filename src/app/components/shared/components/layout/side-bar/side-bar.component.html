@@ -1,0 +1,19 @@
+<div class="row">
+  <div class="box logo-box">
+    <img class="side-logo" [src]="assets.assetIsoLogo" alt="">
+  </div>
+</div>
+<div class="row menu-wrapper">
+  <div class="box">
+    <mat-list role="list">
+      <mat-list-item role="listitem" *ngFor="let menu of testMenu" class="menu-item">
+        <span class="material-icons-outlined">
+          {{menu.icono}}
+        </span>
+        <a class="quitar-enlace" [href]="menu.enlace">
+          <p>{{menu.menu}}</p>
+        </a>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>
