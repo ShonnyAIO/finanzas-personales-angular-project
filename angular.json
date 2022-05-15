@@ -27,6 +27,11 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
+              },
               "src/favicon.ico",
               "src/assets",
               "src/manifest.json",
@@ -101,6 +106,7 @@
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/_redirects",
               "src/favicon.ico",
               "src/assets",
               "src/manifest.webmanifest"

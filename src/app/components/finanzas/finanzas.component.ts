@@ -91,8 +91,6 @@ export class FinanzasComponent implements OnInit {
         this.formCuentas.value.otro_monto = paralelo; */
       }
       this.cuentasPersonales.push(this.formCuentas.value);
-      /* console.log(this.montoDisponible); */
-      console.log(this.cuentasPersonales);
       this.formCuentas.reset();
     } else {
       console.warn('Debes ingresar una cuenta');
@@ -129,7 +127,6 @@ export class FinanzasComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log('Cerrando el dialogo de la imagen');
     });
   }
 

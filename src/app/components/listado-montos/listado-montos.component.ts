@@ -14,7 +14,6 @@ export class ListadoMontosComponent implements OnInit {
   displayedColumns = ['tipo_cuenta', 'monto', 'moneda', 'otra_moneda', 'otro_monto'];
 
   ngOnInit(): void {
-    console.log('Listado de precios que deberia tener xD', this.data.listadoMontos);
   }
 
   closedDialog() {
