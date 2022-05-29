@@ -1,4 +1,6 @@
-# KomerzioFront
+# Angular Finanzas Personales Project
+
+This project, let you to investigate about price of dollar, for example in Venezuela que use BCV (Banco Central de Venezuela) y EnParalelo (USDT)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
 
