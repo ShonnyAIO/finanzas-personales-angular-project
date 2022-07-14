@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from "../../../../../services/global.service";
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 
 
@@ -40,17 +40,20 @@ export class SideBarComponent implements OnInit {
       icono: 'language',
       enlace: 'https://shonnyaio.github.io/'
     },
+    {
+      menu: 'Empresa',
+      icono: 'language',
+      enlace: 'https://komerzio.net/'
+    },
   ];
 
-  constructor(
-    private global: GlobalService,
-    private router: Router, public dialog: MatDialog) { }
+  constructor(public dialog: MatDialogRef<SideBarComponent>) { }
 
   ngOnInit(): void {
   }
 
   closedDialog() {
-    this.dialog.closeAll();
+    this.dialog.close();
   }
 
 }

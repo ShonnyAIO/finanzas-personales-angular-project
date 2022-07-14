@@ -69,10 +69,6 @@ export class FinanzasComponent implements OnInit {
     });
   }
 
-  sumarCuentas(data: any) {
-
-  }
-
   registerAccount() {
     if (this.formCuentas.valid) {
       if (this.formCuentas.value.motivo_cuenta == 'ingreso') {
@@ -181,6 +177,15 @@ export class FinanzasComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((result) => {
+      if (result.clear) {
+        this.cuentasPersonales = [];
+        this.montoDisponible[0].referencia = 'BCV';
+        this.montoDisponible[0].montoBS = 0;
+        this.montoDisponible[0].montoDollar = 0;
+        this.montoDisponible[1].referencia = 'EnParalelo';
+        this.montoDisponible[1].montoBS = 0;
+        this.montoDisponible[1].montoDollar = 0;
+      }
     });
   }
 

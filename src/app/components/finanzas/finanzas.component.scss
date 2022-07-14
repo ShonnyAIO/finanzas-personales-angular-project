@@ -92,6 +92,10 @@
 
 @media (max-width: 500px) {
 
+    body {
+        overflow-x: hidden;
+    }
+
     .mat-toolbar {
         margin-left: 10px;
         width: 90%;
