@@ -3,6 +3,7 @@
         close
     </span>
 </h2>
+<button mat-button class="logout-btn" (click)="resetAccounts()">Eliminar Cuenta</button>
 <h2 mat-dialog-title [class]="{'egreso' : data.listadoMontos[0].montoBS < 0}">
     Precio en Tasa {{data.listadoMontos[0].referencia}}: {{data.listadoMontos[0].montoBS | number : '1.2-2'}} Bs.S /
     {{data.listadoMontos[0].montoDollar | number : '1.2-2' }} REF

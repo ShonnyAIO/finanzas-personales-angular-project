@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
     rol: 'Usuario',
     logo: './../../../../assets/icons/icon-512x512.png'
   }
-  constructor(public dialog: MatDialog, private router: Router, private global: GlobalService) {
+  constructor(public dialog: MatDialog) {
   }
 
   ngOnInit(): void {
