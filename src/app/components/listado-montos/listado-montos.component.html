@@ -5,11 +5,11 @@
 </h2>
 <button mat-button class="logout-btn" (click)="resetAccounts()">Eliminar Cuenta</button>
 <h2 mat-dialog-title [class]="{'egreso' : data.listadoMontos[0].montoBS < 0}">
-    Precio en Tasa {{data.listadoMontos[0].referencia}}: {{data.listadoMontos[0].montoBS | number : '1.2-2'}} Bs.S /
+    Monto en base a {{data.listadoMontos[0].referencia}}: {{data.listadoMontos[0].montoBS | number : '1.2-2'}} Bs.S /
     {{data.listadoMontos[0].montoDollar | number : '1.2-2' }} REF
 </h2>
 <h2 mat-dialog-title [class]="{'egreso' : data.listadoMontos[1].montoBS < 0}">
-    Precio en Tasa {{data.listadoMontos[1].referencia}}: {{data.listadoMontos[1].montoBS | number : '1.2-2'}} Bs.S /
+    Monto en base a {{data.listadoMontos[1].referencia}}: {{data.listadoMontos[1].montoBS | number : '1.2-2'}} Bs.S /
     {{data.listadoMontos[1].montoDollar | number : '1.2-2'}} USD
 </h2>
 <div class="box">
@@ -37,7 +37,13 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-
     </table>
 </div>
+<h2 mat-dialog-title class="ingreso">
+    Ingresos: {{ingreso.monto | number: '1.2-2'}} {{ingreso.moneda}} / {{ingreso.otro_monto | number: '1.2-2'}}
+    {{ingreso.otra_moneda}}
+</h2>
+<h2 mat-dialog-title class="egreso">
+    Egresos: {{egreso.monto | number: '1.2-2'}} {{egreso.moneda}} / {{egreso.otro_monto | number: '1.2-2'}}
+    {{egreso.otra_moneda}}
+</h2>

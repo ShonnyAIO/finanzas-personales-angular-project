@@ -117,9 +117,21 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
-  "defaultProject": "finanzas-personales"
+  "defaultProject": "finanzas-personales",
+  "cli": {
+    "defaultCollection": "@angular-eslint/schematics"
+  }
 }
