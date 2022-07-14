@@ -11,7 +11,7 @@ export class ListadoMontosComponent implements OnInit {
   constructor(@Inject(MAT_DIALOG_DATA) public data: { listadoCuentas: any, listadoMontos: any },
     private dialogRef: MatDialogRef<ListadoMontosComponent>) { }
 
-  displayedColumns = ['tipo_cuenta', 'monto', 'moneda', 'otra_moneda', 'otro_monto'];
+  displayedColumns = ['tipo_cuenta', 'monto', 'otro_monto', 'motivo_cuenta'];
 
   ngOnInit(): void {
   }

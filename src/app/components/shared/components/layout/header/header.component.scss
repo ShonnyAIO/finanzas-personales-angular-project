@@ -1,39 +1,44 @@
-.lg_header_box{
+.lg_header_box {
   padding: 32px;
 }
+
 .mat-toolbar {
   background: #ffffff;
-  color: rgba(0,0,0,.87);
+  color: rgba(0, 0, 0, .87);
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  .row{
+
+  .row {
     width: 100%;
   }
 }
 
-.logo-header{
+.logo-header {
   width: 120px;
   vertical-align: middle;
 }
 
-.user-box{
+.user-box {
   height: 15px;
-  p{
+
+  p {
     font-size: 12px;
     text-align: end;
     line-height: 0.2;
     letter-spacing: normal;
   }
-  .business-name{
+
+  .business-name {
     color: #161d4b;
     font-weight: 600;
   }
-  .business-rol{
+
+  .business-rol {
     text-transform: uppercase;
     color: #80808070;
   }
 }
 
-.user-avatar{
+.user-avatar {
   width: 30px;
   height: 30px;
   object-fit: contain;
@@ -45,16 +50,12 @@
 }
 
 @media (max-width: 768px) {
-  .register-btn{
-    width: 95px;
-    height: 24px;
-    line-height: 26px;
-    font-size: 10px;
-  }
-  .logo-header{
+
+  .logo-header {
     width: 90px;
   }
-  .user-info{
+
+  .user-info {
     display: none;
   }
 }

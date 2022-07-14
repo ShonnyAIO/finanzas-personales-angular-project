@@ -1,6 +1,11 @@
 @import "../../../assets/css/_dashboard.scss";
 @import "../../../assets/css/_colores.scss";
 
+.egreso {
+    color: #961602;
+    font-weight: 600;
+}
+
 .separate {
     margin-top: 25px;
 }
@@ -14,6 +19,7 @@
 }
 
 .pointer-list {
+    margin-top: 10px;
     cursor: pointer;
 }
 
@@ -58,4 +64,59 @@
 .vendedores-ambulantes {
     background-color: $vendedor-ambulante;
     color: $texto;
+}
+
+@media (max-width: 1000px) {
+
+    .bcv button,
+    .enparalelo button,
+    .vendedores-ambulantes button,
+    .mobile-text button {
+        font-size: 12px;
+    }
+
+    .komerzio-full-width,
+    .button-primary {
+        width: 80%;
+    }
+
+    .mobile-text {
+        margin-top: 15px;
+    }
+
+    .pointer-list {
+        width: 300px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .mat-toolbar {
+        margin-left: 10px;
+        width: 90%;
+        height: 90%;
+        padding: 5px;
+    }
+
+    .pointer-list {
+        width: 100%;
+    }
+
+    .text-primary {
+        font-size: 8px;
+    }
+
+    .bcv button,
+    .enparalelo button,
+    .vendedores-ambulantes button,
+    .mobile-text button {
+        font-size: 10px;
+        padding: 6px;
+    }
+
+    .mobile-text {
+        margin-top: 15px;
+    }
+
 }

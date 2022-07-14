@@ -25,6 +25,16 @@ export class FinanzasComponent implements OnInit {
 
   ngOnInit(): void {
     Promise.all([this.getDollarBCV(), this.getDollarParalelo(), this.getDolarAmbulante()]);
+    if (localStorage.getItem('cuentas')) {
+      this.cuentasPersonales = JSON.parse(localStorage.getItem('cuentas') || '[]');
+    }
+    if (localStorage.getItem('monto_disponible')) {
+      this.montoDisponible[0] = JSON.parse(localStorage.getItem('monto_disponible') || '[]');
+    }
+
+    if (localStorage.getItem('monto_paralelo')) {
+      this.montoDisponible[1] = JSON.parse(localStorage.getItem('monto_paralelo') || '[]');
+    }
   }
 
   /* Objects Interfaces */
@@ -53,61 +63,105 @@ export class FinanzasComponent implements OnInit {
   private cuentasForms() {
     this.formCuentas = this.formBuilder.group({
       tipo_cuenta: ['', [Validators.required]],
+      motivo_cuenta: ['', Validators.required],
       monto: [0, [Validators.required]],
       moneda: ['', [Validators.required]]
     });
   }
 
+  sumarCuentas(data: any) {
+
+  }
+
   registerAccount() {
     if (this.formCuentas.valid) {
-      if (this.formCuentas.value.moneda == 'REF') {
-        /* Esto es para el BCV */
-        let precioBCV = Number((this.formCuentas.value.monto * this.montoBCV).toFixed(2));
-        this.montoDisponible[0].montoDollar += this.formCuentas.value.monto;
-        this.montoDisponible[0].montoBS += precioBCV;
-        this.formCuentas.value.otra_moneda = 'BS.S';
-        this.formCuentas.value.otro_monto = precioBCV;
+      if (this.formCuentas.value.motivo_cuenta == 'ingreso') {
+        if (this.formCuentas.value.moneda == 'REF') {
+          /* Esto es para el BCV */
+          let precioBCV = Number((this.formCuentas.value.monto * this.montoBCV).toFixed(2));
+          this.montoDisponible[0].montoDollar += this.formCuentas.value.monto;
+          this.montoDisponible[0].montoBS += precioBCV;
+          this.formCuentas.value.otra_moneda = 'BS.S';
+          this.formCuentas.value.otro_monto = precioBCV;
 
-        /* Esto es par el Enparalelo */
-        let paralelo = Number((this.formCuentas.value.monto * this.montoEN).toFixed(2));
-        this.montoDisponible[1].montoDollar += this.formCuentas.value.monto;
-        this.montoDisponible[1].montoBS += paralelo;
-        /* this.formCuentas.value.otra_moneda = 'BS.S';
-        this.formCuentas.value.otro_monto = paralelo; */
+          /* Esto es par el Enparalelo */
+          let paralelo = Number((this.formCuentas.value.monto * this.montoEN).toFixed(2));
+          this.montoDisponible[1].montoDollar += this.formCuentas.value.monto;
+          this.montoDisponible[1].montoBS += paralelo;
+          /* this.formCuentas.value.otra_moneda = 'BS.S';
+          this.formCuentas.value.otro_monto = paralelo; */
+        } else {
+          /* Esto es para el BCV */
+          let precioBCV = Number((this.formCuentas.value.monto / this.montoBCV).toFixed(2));
+          this.montoDisponible[0].montoDollar += precioBCV;
+          this.montoDisponible[0].montoBS += this.formCuentas.value.monto;
+          this.formCuentas.value.otra_moneda = 'REF';
+          this.formCuentas.value.otro_monto = precioBCV;
+
+          /* Esto es par el Enparalelo */
+          let paralelo = Number((this.formCuentas.value.monto / this.montoEN).toFixed(2));
+          this.montoDisponible[1].montoDollar += paralelo;
+          this.montoDisponible[1].montoBS += this.formCuentas.value.monto;
+          /*
+          this.formCuentas.value.otra_moneda = 'REF';
+          this.formCuentas.value.otro_monto = paralelo; */
+        }
+        this.cuentasPersonales.push(this.formCuentas.value);
+        localStorage.setItem('monto_disponible', JSON.stringify(this.montoDisponible[0]));
+        localStorage.setItem('cuentas', JSON.stringify(this.cuentasPersonales));
+        this.formCuentas.reset();
       } else {
-        /* Esto es para el BCV */
-        let precioBCV = Number((this.formCuentas.value.monto / this.montoBCV).toFixed(2));
-        this.montoDisponible[0].montoDollar += precioBCV;
-        this.montoDisponible[0].montoBS += this.formCuentas.value.monto;
-        this.formCuentas.value.otra_moneda = 'REF';
-        this.formCuentas.value.otro_monto = precioBCV;
 
-        /* Esto es par el Enparalelo */
-        let paralelo = Number((this.formCuentas.value.monto / this.montoEN).toFixed(2));
-        this.montoDisponible[1].montoDollar += paralelo;
-        this.montoDisponible[1].montoBS += this.formCuentas.value.monto;
-        /*
-        this.formCuentas.value.otra_moneda = 'REF';
-        this.formCuentas.value.otro_monto = paralelo; */
+        if (this.formCuentas.value.moneda == 'REF') {
+          /* Esto es para el BCV */
+          let precioBCV = Number((this.formCuentas.value.monto * this.montoBCV).toFixed(2));
+          this.montoDisponible[0].montoDollar -= this.formCuentas.value.monto;
+          this.montoDisponible[0].montoBS -= precioBCV;
+          this.formCuentas.value.otra_moneda = 'BS.S';
+          this.formCuentas.value.otro_monto = precioBCV;
+
+          /* Esto es par el Enparalelo */
+          let paralelo = Number((this.formCuentas.value.monto * this.montoEN).toFixed(2));
+          this.montoDisponible[1].montoDollar -= this.formCuentas.value.monto;
+          this.montoDisponible[1].montoBS -= paralelo;
+
+        } else {
+          /* Esto es para el BCV */
+          let precioBCV = Number((this.formCuentas.value.monto / this.montoBCV).toFixed(2));
+          this.montoDisponible[0].montoDollar -= precioBCV;
+          this.montoDisponible[0].montoBS -= this.formCuentas.value.monto;
+          this.formCuentas.value.otra_moneda = 'REF';
+          this.formCuentas.value.otro_monto = precioBCV;
+
+          /* Esto es par el Enparalelo */
+          let paralelo = Number((this.formCuentas.value.monto / this.montoEN).toFixed(2));
+          this.montoDisponible[1].montoDollar -= paralelo;
+          this.montoDisponible[1].montoBS -= this.formCuentas.value.monto;
+
+        }
+
+        this.cuentasPersonales.push(this.formCuentas.value);
+        localStorage.setItem('monto_disponible', JSON.stringify(this.montoDisponible[0]));
+        localStorage.setItem('monto_paralelo', JSON.stringify(this.montoDisponible[1]));
+        localStorage.setItem('cuentas', JSON.stringify(this.cuentasPersonales));
+        this.formCuentas.reset();
       }
-      this.cuentasPersonales.push(this.formCuentas.value);
-      this.formCuentas.reset();
+
     } else {
-      console.warn('Debes ingresar una cuenta');
+      alert('Debes llenar todos los datos')
+      console.warn('Debes llenar todos los datos');
     }
   }
 
   getErrorMessage(field: string): any {
     let value = this.formCuentas.get(field);
+    /*
     if (value?.hasError('required')) {
       return 'Debes ingresar un valor';
     }
     if (value?.touched) {
       return 'No has interactuado con este formulario';
-    }
-    if (value?.invalid) {
-      return 'Este formato es invalido';
-    }
+    } */
   }
 
   listadoMontos() {
@@ -120,8 +174,8 @@ export class FinanzasComponent implements OnInit {
       },
       position: {
         top: '50px',
-        left: '100px',
-        right: '100px',
+        left: '70px',
+        right: '70px',
         bottom: '50px'
       }
     });
@@ -158,7 +212,7 @@ export class FinanzasComponent implements OnInit {
 
   async getDolarAmbulante() {
     this.monedas.push({
-      monto: 5.0,
+      monto: 5.9,
       tipo_moneda: 'dollar',
       fuente: 'vendedores-ambulantes',
       titulo: 'Precio del Dolar Otros'

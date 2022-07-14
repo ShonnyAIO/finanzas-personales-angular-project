@@ -18,6 +18,23 @@ h2 {
     display: flex;
 }
 
+.ingreso {
+    color: #5CB75C;
+    font-weight: 600;
+}
+
+.egreso {
+    color: #961602;
+    font-weight: 600;
+}
+
 table {
     width: 100%;
+}
+
+@media (max-width: 500px) {
+
+    h2 {
+        font-size: 14px;
+    }
 }
